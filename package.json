@@ -1,5 +1,5 @@
 {
-  "name": "@things-factory/base-resource",
+  "name": "@things-factory/resource-base",
   "version": "0.1.0",
   "main": "src/index.js",
   "things-factory": true,
