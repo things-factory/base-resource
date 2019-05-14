@@ -28,5 +28,15 @@ export class SeedEntityColumn1557815992349 implements MigrationInterface {
     })
   }
 
-  public async down(queryRunner: QueryRunner): Promise<any> {}
+  public async down(queryRunner: QueryRunner): Promise<any> {
+    const repository = getRepository(Resource)
+
+    SEED_ENTITY_COLUMNS.reverse().forEach(async entity => {
+      let record = await repository.findOne({ name: entity.name })
+      let child = await repository.findOne({ name: `${entity.name}-detail` })
+
+      await repository.remove(child)
+      await repository.remove(record)
+    })
+  }
 }
