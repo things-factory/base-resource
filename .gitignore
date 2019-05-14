@@ -1,3 +1,4 @@
+dist-server/
 dist-client/
 node_modules/
 yarn*.*
