@@ -1,14 +1,7 @@
 import { MigrationInterface, QueryRunner, getRepository } from 'typeorm'
 import { Resource } from '../entities'
 import { Domain } from '@things-factory/shell'
-
-const SEED_ENTITIES = [
-  {
-    name: 'System',
-    bundle: 'System',
-    tableName: 'table-sample'
-  }
-]
+import { ENTITIES as SEED_ENTITIES } from '../seed-data/entities'
 
 export class SeedEntity1556878324336 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
@@ -18,16 +11,9 @@ export class SeedEntity1556878324336 implements MigrationInterface {
 
     try {
       SEED_ENTITIES.forEach(async entity => {
-        const createdEntity = await repository.save({
+        await repository.save({
           ...entity,
           domain
-        })
-
-        await repository.save({
-          domain: createdEntity.domain,
-          bundle: createdEntity.bundle,
-          name: `${entity.name} detail`,
-          tableName: `${createdEntity.tableName}-detail`
         })
       })
     } catch (e) {
