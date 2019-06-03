@@ -1,10 +1,13 @@
+import { buildQuery, ListParam } from '@things-factory/shell'
 import { getRepository } from 'typeorm'
 import { ResourceColumn } from '../../../entities'
 
 export const resourceColumnsResolver = {
-  async resourceColumns() {
-    const repository = getRepository(ResourceColumn)
+  async resourceColumns(_: any, params: ListParam, context: any) {
+    const queryBuilder = getRepository(ResourceColumn).createQueryBuilder()
+    buildQuery(queryBuilder, params)
+    const [items, total] = await queryBuilder.getManyAndCount()
 
-    return await repository.find()
+    return { items, total }
   }
 }
