@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
 export const ResourceColumnList = gql`
-  input ResourceColumnList {
+  type ResourceColumnList {
     items: [ResourceColumn]
     total: Int
   }
