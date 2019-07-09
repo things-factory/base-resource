@@ -1,3 +1,4 @@
+import { User } from '@things-factory/auth-base'
 import { Domain, DomainBaseEntity } from '@things-factory/shell'
 import { Column, Entity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 import { ResourceColumn } from './resource-column'
@@ -58,11 +59,11 @@ export class Resource extends DomainBaseEntity {
   })
   masterId: string
 
-  @ManyToOne(type => Resource, parent => parent.children)
+  @ManyToOne(type => Resource, parent => parent.childrens)
   parent: Resource
 
   @OneToMany(type => Resource, child => child.parent)
-  children: Resource[]
+  childrens: Resource[]
 
   @Column('text', {
     nullable: true
@@ -101,4 +102,10 @@ export class Resource extends DomainBaseEntity {
 
   @OneToMany(type => ResourceColumn, resourceColumn => resourceColumn.entity)
   columns: ResourceColumn
+
+  @ManyToOne(type => User)
+  creator: User
+
+  @ManyToOne(type => User)
+  updater: User
 }

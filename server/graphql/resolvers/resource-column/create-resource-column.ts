@@ -1,16 +1,19 @@
-import uuid from 'uuid/v4'
-
 import { getRepository } from 'typeorm'
-import { ResourceColumn } from '../../../entities'
+import { Resource, ResourceColumn } from '../../../entities'
 
 export const createResourceColumn = {
-  async createResourceColumn(_, { resourceColumn: attrs }) {
+  async createResourceColumn(_: any, { resourceColumn }, context: any) {
     const repository = getRepository(ResourceColumn)
-    const newResourceColumn = {
-      id: uuid(),
-      ...attrs
+
+    if (resourceColumn.entity) {
+      resourceColumn.entity = await getRepository(Resource).findOne({ where: { id: resourceColumn.entity } })
     }
 
-    return await repository.save(newResourceColumn)
+    return repository.save({
+      domain: context.domain,
+      ...resourceColumn,
+      creatorId: context.state.user.id,
+      updaterId: context.state.user.id
+    })
   }
 }

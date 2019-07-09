@@ -1,3 +1,4 @@
+import { User } from '@things-factory/auth-base'
 import { Domain, DomainBaseEntity } from '@things-factory/shell'
 import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { Resource } from './resource'
@@ -184,4 +185,10 @@ export class ResourceColumn extends DomainBaseEntity {
     default: false
   })
   ignoreOnSav: boolean
+
+  @ManyToOne(type => User)
+  creator: User
+
+  @ManyToOne(type => User)
+  updater: User
 }
