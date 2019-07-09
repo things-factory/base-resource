@@ -23,9 +23,6 @@ export class EntityColumn {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
-  entityId: string
-
   @ManyToOne(type => Entity, entity => entity.columns)
   entity: Entity
 
