@@ -1,6 +1,15 @@
 import { User } from '@things-factory/auth-base'
-import { Domain, DomainBaseEntity } from '@things-factory/shell'
-import { Column, Entity as ORMEntity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Domain } from '@things-factory/shell'
+import {
+  CreateDateColumn,
+  UpdateDateColumn,
+  Column,
+  Entity as ORMEntity,
+  Index,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from 'typeorm'
 import { EntityColumn } from './entity-column'
 
 @ORMEntity('entities')
@@ -8,7 +17,7 @@ import { EntityColumn } from './entity-column'
 @Index('ix_entity_1', (entity: Entity) => [entity.domain])
 @Index('ix_entity_2', (entity: Entity) => [entity.bundle])
 @Index('ix_entity_3', (entity: Entity) => [entity.domain, entity.masterId])
-export class Entity extends DomainBaseEntity {
+export class Entity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -102,6 +111,12 @@ export class Entity extends DomainBaseEntity {
 
   @OneToMany(type => EntityColumn, entityColumn => entityColumn.entity)
   columns: EntityColumn
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
 
   @ManyToOne(type => User)
   creator: User

@@ -1,6 +1,14 @@
 import { User } from '@things-factory/auth-base'
-import { Domain, DomainBaseEntity } from '@things-factory/shell'
-import { Column, Entity as ORMEntity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Domain } from '@things-factory/shell'
+import {
+  CreateDateColumn,
+  UpdateDateColumn,
+  Column,
+  Entity as ORMEntity,
+  Index,
+  ManyToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm'
 import { Entity } from './entity'
 
 @ORMEntity('entity-columns')
@@ -8,7 +16,7 @@ import { Entity } from './entity'
   unique: true
 })
 @Index('ix_entity_col_1', (entityColumn: EntityColumn) => [entityColumn.entity, entityColumn.rank])
-export class EntityColumn extends DomainBaseEntity {
+export class EntityColumn {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -185,6 +193,12 @@ export class EntityColumn extends DomainBaseEntity {
     default: false
   })
   ignoreOnSav: boolean
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
 
   @ManyToOne(type => User)
   creator: User
