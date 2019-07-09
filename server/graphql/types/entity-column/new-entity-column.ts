@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
-export const NewResourceColumn = gql`
-  input NewResourceColumn {
+export const NewEntityColumn = gql`
+  input NewEntityColumn {
     entity: String!
     name: String!
     description: String

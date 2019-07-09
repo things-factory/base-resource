@@ -1,14 +1,14 @@
 import { User } from '@things-factory/auth-base'
 import { Domain, DomainBaseEntity } from '@things-factory/shell'
-import { Column, Entity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { ResourceColumn } from './resource-column'
+import { Column, Entity as ORMEntity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { EntityColumn } from './entity-column'
 
-@Entity('entities')
-@Index('ix_entity_0', (resource: Resource) => [resource.domain, resource.name], { unique: true })
-@Index('ix_entity_1', (resource: Resource) => [resource.domain])
-@Index('ix_entity_2', (resource: Resource) => [resource.bundle])
-@Index('ix_entity_3', (resource: Resource) => [resource.domain, resource.masterId])
-export class Resource extends DomainBaseEntity {
+@ORMEntity('entities')
+@Index('ix_entity_0', (entity: Entity) => [entity.domain, entity.name], { unique: true })
+@Index('ix_entity_1', (entity: Entity) => [entity.domain])
+@Index('ix_entity_2', (entity: Entity) => [entity.bundle])
+@Index('ix_entity_3', (entity: Entity) => [entity.domain, entity.masterId])
+export class Entity extends DomainBaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -59,11 +59,11 @@ export class Resource extends DomainBaseEntity {
   })
   masterId: string
 
-  @ManyToOne(type => Resource, parent => parent.childrens)
-  parent: Resource
+  @ManyToOne(type => Entity, master => master.childrens)
+  master: Entity
 
-  @OneToMany(type => Resource, child => child.parent)
-  childrens: Resource[]
+  @OneToMany(type => Entity, child => child.master)
+  childrens: Entity[]
 
   @Column('text', {
     nullable: true
@@ -100,8 +100,8 @@ export class Resource extends DomainBaseEntity {
   })
   extEntity: boolean
 
-  @OneToMany(type => ResourceColumn, resourceColumn => resourceColumn.entity)
-  columns: ResourceColumn
+  @OneToMany(type => EntityColumn, entityColumn => entityColumn.entity)
+  columns: EntityColumn
 
   @ManyToOne(type => User)
   creator: User

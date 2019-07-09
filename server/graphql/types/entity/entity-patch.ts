@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
-export const ResourcePatch = gql`
-  input ResourcePatch {
+export const EntityPatch = gql`
+  input EntityPatch {
     name: String
     description: String
     bundle: String
@@ -11,8 +11,7 @@ export const ResourcePatch = gql`
     idType: String
     idField: String
     titleField: String
-    masterId: String
-    parent: String
+    master: String
     childrens: [String]
     association: String
     dataProp: String

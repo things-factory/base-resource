@@ -1,6 +1,6 @@
-import { Resource } from './resource'
-import { ResourceColumn } from './resource-column'
+import { Entity } from './entity'
+import { EntityColumn } from './entity-column'
 
-export const entities = [Resource, ResourceColumn]
+export const entities = [Entity, EntityColumn]
 
-export { Resource, ResourceColumn }
+export { Entity, EntityColumn }

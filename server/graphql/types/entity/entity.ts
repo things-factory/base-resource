@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
-export const Resource = gql`
-  type Resource {
+export const Entity = gql`
+  type Entity {
     id: String
     domain: Domain
     name: String
@@ -13,9 +13,8 @@ export const Resource = gql`
     idType: String
     idField: String
     titleField: String
-    masterId: String
-    parent: Resource
-    childrens: [Resource]
+    master: Entity
+    childrens: [Entity]
     association: String
     dataProp: String
     refField: String
@@ -23,7 +22,7 @@ export const Resource = gql`
     fixedColumns: Int
     active: Boolean
     extEntity: Boolean
-    columns: [ResourceColumn]
+    columns: [EntityColumn]
     creator: User
     updater: User
     createdAt: String

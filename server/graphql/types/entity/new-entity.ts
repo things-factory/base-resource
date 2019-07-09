@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-koa'
 
-export const NewResource = gql`
-  input NewResource {
+export const NewEntity = gql`
+  input NewEntity {
     name: String!
     description: String
     bundle: String!
@@ -11,8 +11,7 @@ export const NewResource = gql`
     idType: String
     idField: String
     titleField: String
-    masterId: String
-    parent: String
+    master: String
     association: String
     dataProp: String
     refField: String

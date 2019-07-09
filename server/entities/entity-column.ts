@@ -1,14 +1,14 @@
 import { User } from '@things-factory/auth-base'
 import { Domain, DomainBaseEntity } from '@things-factory/shell'
-import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
-import { Resource } from './resource'
+import { Column, Entity as ORMEntity, Index, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity } from './entity'
 
-@Entity('entity-columns')
-@Index('ix_entity_col_0', (resourceColumn: ResourceColumn) => [resourceColumn.entity, resourceColumn.name], {
+@ORMEntity('entity-columns')
+@Index('ix_entity_col_0', (entityColumn: EntityColumn) => [entityColumn.entity, entityColumn.name], {
   unique: true
 })
-@Index('ix_entity_col_1', (resourceColumn: ResourceColumn) => [resourceColumn.entity, resourceColumn.rank])
-export class ResourceColumn extends DomainBaseEntity {
+@Index('ix_entity_col_1', (entityColumn: EntityColumn) => [entityColumn.entity, entityColumn.rank])
+export class EntityColumn extends DomainBaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -18,8 +18,8 @@ export class ResourceColumn extends DomainBaseEntity {
   @Column('text')
   entityId: string
 
-  @ManyToOne(type => Resource, resource => resource.columns)
-  entity: Resource
+  @ManyToOne(type => Entity, entity => entity.columns)
+  entity: Entity
 
   @Column('text')
   name: string

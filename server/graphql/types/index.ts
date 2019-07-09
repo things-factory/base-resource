@@ -1,8 +1,8 @@
-import * as Resource from './resource'
-import * as ResourceColumn from './resource-column'
+import * as Entity from './entity'
+import * as EntityColumn from './entity-column'
 
-export const queries = [Resource.Query, ResourceColumn.Query]
+export const queries = [Entity.Query, EntityColumn.Query]
 
-export const mutations = [Resource.Mutation, ResourceColumn.Mutation]
+export const mutations = [Entity.Mutation, EntityColumn.Mutation]
 
-export const types = [...Resource.Types, ...ResourceColumn.Types]
+export const types = [...Entity.Types, ...EntityColumn.Types]

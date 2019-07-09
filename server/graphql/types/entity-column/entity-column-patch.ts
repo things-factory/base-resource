@@ -1,10 +1,8 @@
 import { gql } from 'apollo-server-koa'
 
-export const ResourceColumn = gql`
-  type ResourceColumn {
-    id: String
-    domain: Domain
-    entity: Resource
+export const EntityColumnPatch = gql`
+  input EntityColumnPatch {
+    entity: String
     name: String
     description: String
     rank: Int
@@ -38,9 +36,5 @@ export const ResourceColumn = gql`
     defVal: String
     rangeVal: String
     ignoreOnSav: Boolean
-    creator: User
-    updater: User
-    createdAt: String
-    updatedAt: String
   }
 `
