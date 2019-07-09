@@ -16,7 +16,7 @@ import { EntityColumn } from './entity-column'
 @Index('ix_entity_0', (entity: Entity) => [entity.domain, entity.name], { unique: true })
 @Index('ix_entity_1', (entity: Entity) => [entity.domain])
 @Index('ix_entity_2', (entity: Entity) => [entity.bundle])
-@Index('ix_entity_3', (entity: Entity) => [entity.domain, entity.masterId])
+@Index('ix_entity_3', (entity: Entity) => [entity.domain, entity.master])
 export class Entity {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -62,11 +62,6 @@ export class Entity {
     nullable: true
   })
   titleField: string
-
-  @Column('text', {
-    nullable: true
-  })
-  masterId: string
 
   @ManyToOne(type => Entity, master => master.childrens)
   master: Entity
