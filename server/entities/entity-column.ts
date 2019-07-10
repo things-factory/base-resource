@@ -11,7 +11,7 @@ import {
 } from 'typeorm'
 import { Entity } from './entity'
 
-@ORMEntity('entity-columns')
+@ORMEntity()
 @Index('ix_entity_col_0', (entityColumn: EntityColumn) => [entityColumn.entity, entityColumn.name], {
   unique: true
 })
