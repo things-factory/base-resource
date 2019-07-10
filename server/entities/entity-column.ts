@@ -1,13 +1,13 @@
 import { User } from '@things-factory/auth-base'
 import { Domain } from '@things-factory/shell'
 import {
-  CreateDateColumn,
-  UpdateDateColumn,
   Column,
+  CreateDateColumn,
   Entity as ORMEntity,
   Index,
   ManyToOne,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
 } from 'typeorm'
 import { Entity } from './entity'
 
