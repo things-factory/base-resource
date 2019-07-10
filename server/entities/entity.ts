@@ -1,14 +1,14 @@
 import { User } from '@things-factory/auth-base'
 import { Domain } from '@things-factory/shell'
 import {
-  CreateDateColumn,
-  UpdateDateColumn,
   Column,
+  CreateDateColumn,
   Entity as ORMEntity,
   Index,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
 } from 'typeorm'
 import { EntityColumn } from './entity-column'
 
@@ -113,9 +113,13 @@ export class Entity {
   @UpdateDateColumn()
   updatedAt: Date
 
-  @ManyToOne(type => User)
+  @ManyToOne(type => User, {
+    nullable: true
+  })
   creator: User
 
-  @ManyToOne(type => User)
+  @ManyToOne(type => User, {
+    nullable: true
+  })
   updater: User
 }
