@@ -26,10 +26,10 @@ export class EntityColumn {
   @ManyToOne(type => Entity, entity => entity.columns)
   entity: Entity
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string
@@ -39,12 +39,12 @@ export class EntityColumn {
   })
   rank: number
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   term: string
 
-  @Column('text')
+  @Column()
   colType: string
 
   @Column('int', {
@@ -52,33 +52,33 @@ export class EntityColumn {
   })
   colSize: number
 
-  @Column('boolean', {
+  @Column({
     nullable: true,
     default: true
   })
   nullable: boolean
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   refType: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   refName: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   refUrl: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   refParams: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   refRelated: string
@@ -93,34 +93,34 @@ export class EntityColumn {
   })
   sortRank: number
 
-  @Column('boolean', {
+  @Column({
     nullable: true,
     default: false
   })
   reverseSort: boolean
 
-  @Column('boolean', {
+  @Column({
     nullable: true,
     default: false
   })
   virtualField: boolean
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   searchName: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   searchEditor: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   searchOper: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   searchInitVal: string
@@ -130,17 +130,17 @@ export class EntityColumn {
   })
   gridRank: number
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   gridEditor: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   gridFormat: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   gridValidator: string
@@ -150,7 +150,7 @@ export class EntityColumn {
   })
   gridWidth: number
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   gridAlign: string
@@ -160,32 +160,32 @@ export class EntityColumn {
   })
   uniqRank: number
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   formEditor: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   formValidator: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   formFormat: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   defVal: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   rangeVal: string
 
-  @Column('boolean', {
+  @Column({
     nullable: true,
     default: false
   })

@@ -24,41 +24,41 @@ export class Entity {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   description: string
 
-  @Column('text')
+  @Column()
   bundle: string
 
-  @Column('text')
+  @Column()
   tableName: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   searchUrl: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   multiSaveUrl: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   idType: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   idField: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   titleField: string
@@ -69,22 +69,22 @@ export class Entity {
   @OneToMany(type => Entity, child => child.master)
   childrens: Entity[]
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   association: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   dataProp: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   refField: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   delStrategy: string
@@ -94,12 +94,12 @@ export class Entity {
   })
   fixedColumns: number
 
-  @Column('boolean', {
+  @Column({
     default: true
   })
   active: boolean
 
-  @Column('boolean', {
+  @Column({
     nullable: true
   })
   extEntity: boolean
