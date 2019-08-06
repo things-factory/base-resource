@@ -3,9 +3,9 @@ import { getRepository } from 'typeorm'
 import { Entity } from '../../../entities'
 
 export const entitiesResolver = {
-  async entities(_: any, params: ListParam) {
+  async entities(_: any, params: ListParam, context: any) {
     const queryBuilder = getRepository(Entity).createQueryBuilder()
-    buildQuery(queryBuilder, params)
+    buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Entity.domain', 'Domain')
       .leftJoinAndSelect('Entity.master', 'Master')
