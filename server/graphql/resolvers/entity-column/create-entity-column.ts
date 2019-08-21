@@ -12,8 +12,8 @@ export const createEntityColumn = {
     return repository.save({
       domain: context.domain,
       ...entityColumn,
-      creatorId: context.state.user.id,
-      updaterId: context.state.user.id
+      creator: context.state.user,
+      updater: context.state.user
     })
   }
 }

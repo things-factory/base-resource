@@ -16,7 +16,7 @@ export const updateEntityColumn = {
     return await repository.save({
       ...entityColumn,
       ...patch,
-      updaterId: context.state.user.id
+      updater: context.state.user
     })
   }
 }

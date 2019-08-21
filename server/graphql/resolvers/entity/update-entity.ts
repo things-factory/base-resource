@@ -20,7 +20,7 @@ export const updateEntity = {
     return await repository.save({
       ...entity,
       ...patch,
-      updaterId: context.state.user.id
+      updater: context.state.user
     })
   }
 }
