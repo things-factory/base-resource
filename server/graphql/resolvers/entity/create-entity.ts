@@ -10,7 +10,7 @@ export const createEntity = {
     }
 
     return await repository.save({
-      domain: context.domain,
+      domain: context.state.domain,
       ...entity,
       creator: context.state.user,
       updater: context.state.user

@@ -10,7 +10,7 @@ export const createEntityColumn = {
     }
 
     return repository.save({
-      domain: context.domain,
+      domain: context.state.domain,
       ...entityColumn,
       creator: context.state.user,
       updater: context.state.user

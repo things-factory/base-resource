@@ -3,6 +3,6 @@ import { EntityColumn } from '../../../entities'
 
 export const deleteEntityColumn = {
   async deleteEntityColumn(_: any, { name }, context: any) {
-    return await getRepository(EntityColumn).delete({ domain: context.domain, name })
+    return await getRepository(EntityColumn).delete({ domain: context.state.domain, name })
   }
 }

@@ -5,7 +5,7 @@ export const updateEntityColumn = {
   async updateEntityColumn(_: any, { name, patch }, context: any) {
     const repository = getRepository(EntityColumn)
     const entityColumn = await repository.findOne({
-      where: { domain: context.domain, name },
+      where: { domain: context.state.domain, name },
       relations: ['entity']
     })
 
